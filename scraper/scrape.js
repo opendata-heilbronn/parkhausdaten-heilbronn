@@ -1,22 +1,21 @@
 ﻿const cheerio = require('cheerio');
 
 function scrape(html) {
-	let result = {carparks: {}};
-	//let result = {carparks: []};
-	let $ = cheerio.load(html);
-	let time = $('div.carparkHead > div').text();
-	time = time.replace("Datum: ", "").replace(" - Uhrzeit: ", " "); 
-	result.time = time;
-    $('div.carparkContent').each(function(i, element){
-	  let location = $(this).find('.carparkLocation > a').text();
-	  let freeString = $(this).children('.col-xs-5').text();
-	  let free = freeString.replace("Freie Parkplätze: ", "") || "-1";
-	  result.carparks[location] = {free: +free};
-	  //result.carparks.push({name: location, free: +free});
+    let result = {carparks: {}};
+    //let result = {carparks: []};
+    let $ = cheerio.load(html);
+    let time = $('div.carparkHead > div').text();                           //extract update time
+    result.time = time.replace("Datum: ", "").replace(" - Uhrzeit: ", " "); //quite dirty method, but should work
+    $('div.carparkContent').each(function(i, element){                      //loop thorugh all carpark elements
+      let location = $(this).find('.carparkLocation > a').text();           //extract carpark name
+      let freeString = $(this).children('.col-xs-5').text();                //extract carpark free places
+      let free = freeString.replace("Freie Parkplätze: ", "") || "-1";      //remove unnecessary string
+      result.carparks[location] = {free: +free};                            //add carpark to results
+      //result.carparks.push({name: location, free: +free});
     });
-	return result;
+    return result;
 }
 
 module.exports = {
-	scrape
+    scrape
 }
