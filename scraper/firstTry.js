@@ -8,15 +8,15 @@ let first = true;
 request(apiUrl,(error, response, html) => {
   if (!error && response.statusCode == 200) {
     //console.log(html);
-	var $ = cheerio.load(html);
-	console.log($('div.carparkHead > div').text());
+    var $ = cheerio.load(html);
+    console.log($('div.carparkHead > div').text());
     $('div.carparkContent').each(function(i, element){
       //var a = $(this).prev();
       //console.log(a.text());
-		  first = false;
-		  console.log($(this).find('.carparkLocation > a').text());
-		  console.log($(this).children('.col-xs-5').text());
-		  console.log();
+          first = false;
+          console.log($(this).find('.carparkLocation > a').text());
+          console.log($(this).children('.col-xs-5').text());
+          console.log();
     });
   }
 });
