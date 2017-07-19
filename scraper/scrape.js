@@ -1,11 +1,19 @@
 ﻿const cheerio = require('cheerio');
+const moment = require('moment');
 
 function scrape(html) {
     let result = {carparks: {}};
     //let result = {carparks: []};
+	
     let $ = cheerio.load(html);
-    let time = $('div.carparkHead > div').text();                           //extract update time
-    result.time = time.replace("Datum: ", "").replace(" - Uhrzeit: ", " "); //quite dirty method, but should work
+	
+    let updateTime = $('div.carparkHead > div').text();                     //extract update time
+	updateTime = updateTime
+		.replace("Datum: ", "")
+		.replace(" - Uhrzeit: ", " "); 										//quite dirty method, but should work
+	let t = moment(updateTime, 'DD.MM.YYYY HH:mm');							//parse update time
+    result.time = t.unix();
+	
     $('div.carparkContent').each(function(i, element){                      //loop thorugh all carpark elements
       let location = $(this).find('.carparkLocation > a').text();           //extract carpark name
       let freeString = $(this).children('.col-xs-5').text();                //extract carpark free places
