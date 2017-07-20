@@ -26,3 +26,34 @@ let carpark = {
         }
     ]
 }
+
+
+let wollhaus = {
+    id: "asdfasdf",
+    name: "Am Wollhaus",
+    openingHours: "24/7",
+    capacity: 666,
+    properties: {
+        womenLots: true,
+        maximumHeight: 200
+    },
+    fees: [
+        {
+            startTime: "00:00",
+            endTime: "23:59",
+            maximumFee: 12.00,
+            intervals: [
+                {
+                    pricePerInterval: 0.5,
+                    billingInterval: 20,
+                    maxDuration: 239
+                },
+                {
+                    pricePerInterval: 1.5,
+                    billingInterval: 60,
+                    maxDuration: Number.POSITIVE_INFINITY
+                }
+            ]
+        }
+    ]
+}
