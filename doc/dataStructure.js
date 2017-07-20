@@ -17,15 +17,15 @@ let carpark = {
         {
             startTime: String,              //time of day that the tarif counts
             endTime: String,
-            maximumFee: Number,           //maximum price per day
+            maximumFee: Number,             //maximum price per day in cents
             intervals: [{
-                pricePerInterval: Number,
+                pricePerInterval: Number,   //in cents
                 billingInterval: Number,    //in minutes, interval
                 maxDuration: Number,        //in minutes, time before next tarif kicks in
                 }]
         }
     ]
-}
+};
 
 
 let wollhaus = {
@@ -41,19 +41,19 @@ let wollhaus = {
         {
             startTime: "00:00",
             endTime: "23:59",
-            maximumFee: 12.00,
+            maximumFee: 1200,
             intervals: [
                 {
-                    pricePerInterval: 0.5,
+                    pricePerInterval: 50,
                     billingInterval: 20,
-                    maxDuration: 239
+                    maxDuration: 240
                 },
                 {
-                    pricePerInterval: 1.5,
+                    pricePerInterval: 150,
                     billingInterval: 60,
                     maxDuration: Number.POSITIVE_INFINITY
                 }
             ]
         }
     ]
-}
+};
