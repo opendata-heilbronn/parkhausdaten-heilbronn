@@ -1,5 +1,4 @@
 let experimenta = {
-    id: undefined,
     name: "City Parkhaus experimenta",
     location: "relation/1178538",
     openingHours: "24/7",
@@ -45,7 +44,6 @@ let experimenta = {
 };
 
 let bollwerksturm = {
-    id: undefined,
     name: "City Parkhaus am Bollwerksturm",
     location: "way/28989124",
     openingHours: "24/7",
@@ -91,7 +89,6 @@ let bollwerksturm = {
 };
 
 let wollhaus = {
-    id: undefined,
     name: "Am Wollhaus",
     openingHours: "24/7",
     capacity: 666,
@@ -117,7 +114,6 @@ let wollhaus = {
 };
 
 let stadtgalerie = {
-    id: undefined,
     name: "Stadtgalerie/Kaufhof",
     location: "way/35786608",
     openingHours: "08:00-02:00", //hopefully parses
@@ -160,7 +156,6 @@ let stadtgalerie = {
 };
 
 let harmonie = {
-    id: undefined,
     name: "Harmonie",
     location: "node/1225517061",
     openingHours: "Mo-Sa 07:30-02:00, Su,PH 09:00-02:00",
@@ -196,7 +191,6 @@ let harmonie = {
 };
 
 let kaethchenhof = {
-    id: undefined,
     name: "Käthchenhof",
     location: "node/416063388",
     openingHours: "Mo-Sa 08:00-20:00, PH off",
@@ -218,7 +212,6 @@ let kaethchenhof = {
 };
 
 let k3 = {
-    id: undefined,
     name: "Theaterforum K3",
     location: "node/318200104",
     openingHours: "Mo-Sa 06:00-02:00, Su,PH 10:00-02:00",
@@ -264,7 +257,6 @@ let k3 = {
 };
 
 let kiliansplatz = {
-    id: undefined,
     name: "Kiliansplatz",
     location: "way/33072126",
     openingHours: "06:00-22:00",
@@ -322,3 +314,5 @@ ab 200 Min.: 12,00 €;
 ab 300 Min.: je angef. 50 Min.: 2,00 €
 Abendtarif 20 bis 6 Uhr: 5  €`
 };
+
+module.exports = [experimenta, bollwerksturm, wollhaus, stadtgalerie, harmonie, kaethchenhof, k3, kiliansplatz];
