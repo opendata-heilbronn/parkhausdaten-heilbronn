@@ -1,19 +1,18 @@
 const Influx = require('influx');
+const config = require('./config');
 
 module.exports = function () {
-    const influx = new Influx.InfluxDB({
-        host: 'localhost',
-        database: 'carpark',
-        schema: [{
-            measurement: 'carpark_status',
-            fields: {
-                freeCarPorts: Influx.FieldType.INTEGER
-            },
-            tags: [
-                'carparkId'
-            ]
-        }]
-    });
+    let influxConf = config.influx;
+    influxConf.schema = [{
+        measurement: 'carpark_status',
+        fields: {
+            freeCarPorts: Influx.FieldType.INTEGER
+        },
+        tags: [
+            'carparkId'
+        ]
+    }];
+    const influx = new Influx.InfluxDB(influxConf);
 
     function write(carparkId, freeCarPorts, timestamp, success) {
         influx.writePoints([

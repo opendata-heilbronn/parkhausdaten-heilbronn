@@ -4,6 +4,7 @@ const carparkSave = require("./carpark-save");
 const carparkRead = require("./carpark-read");
 const bodyParser = require('body-parser');
 const carparkStatusSave = require('./carpark-status-save');
+const config = require('./config');
 
 app.use(bodyParser.json()); // for parsing application/json
 
@@ -25,6 +26,6 @@ app.put('/carparkStatus/:id', function (req, res) {
     })
 });
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!');
+app.listen(config.api.port, function () {
+    console.log('Carpark DB-API listening on port', config.api.port);
 });
