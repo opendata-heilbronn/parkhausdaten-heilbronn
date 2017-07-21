@@ -7,10 +7,19 @@ module.exports = function (carpark, success, error) {
             error(err);
             console.error(err);
         } else {
-            db.collection('carpark').insertOne(carpark, function (err, result) {
-                success(result);
-                db.close();
-            });
+            if (!carpark.internalId)
+                error({message: "no internalId provided"});
+            else {
+                db.collection('carpark').createIndex({"internalId": 1}, {unique: true}); //set internalId as unique
+                db.collection('carpark').updateOne(
+                    {internalId: carpark.internalId},
+                    carpark,
+                    {upsert: true},
+                    function (err, result) {
+                        success(result);
+                        db.close();
+                    });
+            }
         }
     });
 };

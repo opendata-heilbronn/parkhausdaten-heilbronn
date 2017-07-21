@@ -1,5 +1,5 @@
 let carpark = {
-    id: String,                         //id from mongoDB entry
+    internalId: String,                 //user set unique string, is needed for deduplication, because all other properties could change
     name: String,
     feature: String,                    //geoJSON
     location: String,                   //osm location

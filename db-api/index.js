@@ -12,7 +12,7 @@ app.post('/carpark', function (req, res) {
     carparkSave(req.body, function (result) {
         res.json({"id": result.insertedId})
     }, function (err) {
-        res.status(500).json({status: "error"});
+        res.status(500).json({status: "error", error: err.message});
     })
 });
 
@@ -20,7 +20,7 @@ app.get('/carpark', function (req, res) {
     carparkRead(req.query, function (doc) {
         res.json(doc);
     }, function (err) {
-        res.status(500).json({status: "error"});
+        res.status(500).json({status: "error", error: err.message});
     });
 });
 
