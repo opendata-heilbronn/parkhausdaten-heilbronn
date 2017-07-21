@@ -5,3 +5,6 @@ https://www.heilbronn.de/allgemeine-inhalte/ajax-parkhausbelegung.html?type=1496
 
 ### Beobachteter Aktualisierungs-Intervall
 ca. 5 Minuten
+
+### DevNotes
+- `osm` = Open Street Map
