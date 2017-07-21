@@ -11,18 +11,22 @@ app.use(bodyParser.json()); // for parsing application/json
 app.post('/carpark', function (req, res) {
     carparkSave(req.body, function (result) {
         res.json({"id": result.insertedId})
+    }, function (err) {
+        res.status(500).json({status: "error"});
     })
 });
 
 app.get('/carpark', function (req, res) {
-    carparkRead(function (doc) {
+    carparkRead(req.query, function (doc) {
         res.json(doc);
-    })
+    }, function (err) {
+        res.status(500).json({status: "error"});
+    });
 });
 
 app.put('/carparkStatus/:id', function (req, res) {
     carparkStatusSave().write(req.params.id, req.body.freeCarPorts, req.body.timestamp, function () {
-        res.send(200);
+        res.sendStatus(200);
     })
 });
 

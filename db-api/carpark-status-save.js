@@ -21,8 +21,17 @@ module.exports = function () {
                 timestamp: timestamp,
                 tags: {carparkId: carparkId},
                 fields: {freeCarPorts: freeCarPorts}
-            }
-        ], {precision: "s"}).then(success);
+            }],
+            {precision: "s"})
+            .then(success)
+            .catch((e) => {
+                if (e.res.statusCode == 404) { //if database was not found
+                    influx.createDatabase(config.influx.database)
+                        .then(() => {
+                            write(carparkId, freeCarPorts, timestamp, success)
+                        });
+                }
+            });
     }
 
     return {write}
