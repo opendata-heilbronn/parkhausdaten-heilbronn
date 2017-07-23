@@ -78,3 +78,5 @@ async function doPoll() { //main function
 }
 
 doPoll();
+
+module.exports = {doPoll};
