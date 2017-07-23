@@ -1,0 +1,39 @@
+{
+  "name": "parkhausdaten-heilbronn",
+  "version": "0.0.1",
+  "description": "https://www.heilbronn.de/allgemeine-inhalte/ajax-parkhausbelegung.html?type=1496993343",
+  "main": "db-api/index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opendata-heilbronn/parkhausdaten-heilbronn.git"
+  },
+  "keywords": [
+    "parkhaus",
+    "carpark",
+    "data",
+    "open-data",
+    "scraper",
+    "nodejs"
+  ],
+  "author": "Adrian + Leandro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opendata-heilbronn/parkhausdaten-heilbronn/issues"
+  },
+  "homepage": "https://github.com/opendata-heilbronn/parkhausdaten-heilbronn#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "influx": "^5.0.7",
+    "mongodb": "^2.2.30",
+    "cheerio": "^1.0.0-rc.2",
+    "moment": "^2.18.1",
+    "request": "^2.81.0"
+  }
+}
