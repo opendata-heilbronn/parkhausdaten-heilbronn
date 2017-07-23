@@ -26,9 +26,17 @@ app.get('/carpark', function (req, res) {
 });
 
 app.put('/carparkStatus/:id', function (req, res) {
-    carparkStatusSave().write(req.params.id, req.body.freeCarPorts, req.body.timestamp, function () {
-        res.status(200).json({status: "success"});
-    })
+    carparkStatusSave().write(
+        req.params.id,
+        req.body.freeCarPorts,
+        req.body.timestamp,
+        function () {
+            res.status(200).json({status: "success"});
+        },
+        function (err) {
+            res.status(500).json({status: "error", error: err.message});
+        }
+    )
 });
 
 app.listen(config.api.port, function () {

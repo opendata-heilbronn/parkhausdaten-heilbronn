@@ -14,7 +14,7 @@ module.exports = function () {
     }];
     const influx = new Influx.InfluxDB(influxConf);
 
-    function write(carparkId, freeCarPorts, timestamp, success) {
+    function write(carparkId, freeCarPorts, timestamp, success, error) {
         influx.writePoints([
             {
                 measurement: 'carpark_status',
@@ -25,12 +25,21 @@ module.exports = function () {
             {precision: "s"})
             .then(success)
             .catch((e) => {
-                if (e.res.statusCode == 404) { //if database was not found
+                if(e.code == "ECONNREFUSED") {
+                    console.error(e.message);
+                    error(e);
+                }
+                else if (e.res.statusCode == 404) { //if database was not found
                     influx.createDatabase(config.influx.database)
                         .then(() => {
                             write(carparkId, freeCarPorts, timestamp, success)
                         });
                 }
+                else {
+                    console.error(e);
+                    error(e);
+                }
+
             });
     }
 
