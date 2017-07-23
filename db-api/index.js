@@ -10,7 +10,7 @@ app.use(bodyParser.json()); // for parsing application/json
 
 app.post('/carpark', function (req, res) {
     carparkSave(req.body, function (result) {
-        res.json({"id": result.insertedId})
+        res.json({"id": result.insertedId, "status": "success"})
     }, function (err) {
         res.status(500).json({status: "error", error: err.message});
     })
@@ -18,6 +18,7 @@ app.post('/carpark', function (req, res) {
 
 app.get('/carpark', function (req, res) {
     carparkRead(req.query, function (doc) {
+        doc.status = "success";
         res.json(doc);
     }, function (err) {
         res.status(500).json({status: "error", error: err.message});
@@ -26,7 +27,7 @@ app.get('/carpark', function (req, res) {
 
 app.put('/carparkStatus/:id', function (req, res) {
     carparkStatusSave().write(req.params.id, req.body.freeCarPorts, req.body.timestamp, function () {
-        res.sendStatus(200);
+        res.status(200).json({status: "success"});
     })
 });
 
