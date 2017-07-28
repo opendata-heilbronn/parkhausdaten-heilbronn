@@ -1,3 +1,7 @@
+process.on('unhandledRejection', event => {
+    throw event;
+});
+
 let scraper = require('./scraper');
 
 let interval = 60000;

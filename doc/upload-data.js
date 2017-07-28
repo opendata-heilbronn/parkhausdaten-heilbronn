@@ -4,22 +4,28 @@ const config = require('../db-api/config');
 const data = require('./parkhaeuser-heilbronn'); //change data to upload here, has to be in data format specified in dataStructure.js
 
 let opts = {
-    url: 'http://127.0.0.1:' + config.api.port + '/carpark',
+    url: 'http://localhost:' + config.api.port + '/carpark',
+    proxy: '',
     headers: {
         'Content-Type': 'application/json'
     }
 };
 
 data.forEach((elem) => {
-    console.log(elem.internalId);
+    //console.log(elem.internalId);
     opts.body = JSON.stringify(elem);
     request.post(opts, (err, res, body) => {
-        if(err) {
+        if (err) {
             console.error('Error uploading', elem.name, ":", err.message);
         }
         else {
-            let r = JSON.parse(body);
-            console.log('uploading', elem.name, r.status, r.error || "");
+            try {
+                let r = JSON.parse(body);
+                console.log('uploading', elem.name, r.status, r.error || "");
+            } catch (e) {
+                console.log('uploading', elem.name, "failed ", body.replace(/(\r\n|\n|\r)/gm, ""))
+            }
+
         }
     })
 });
