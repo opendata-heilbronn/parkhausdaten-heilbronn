@@ -13,6 +13,8 @@ services:
       - db
     environment:
       INFLUX_HOST: "influx.cfhn.it"
+      INFLUX_PORT: "443"
+      INFLUX_PROTOCOL: "https"
       INFLUX_DB: "parkhaus-hn"
       MONGODB_URL: "mongodb://root:root@db:27017/carpark?authSource=admin"
       API_PORT: "3001"

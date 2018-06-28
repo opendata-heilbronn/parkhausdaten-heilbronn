@@ -4,7 +4,7 @@ const config = require('../db-api/config');
 const data = require('./parkhaeuser-heilbronn'); //change data to upload here, has to be in data format specified in dataStructure.js
 
 let opts = {
-    url: 'http://localhost:' + config.api.port + '/carpark',
+    url: 'https://parkhn.cfhn.it/carpark',
     proxy: '',
     headers: {
         'Content-Type': 'application/json'
