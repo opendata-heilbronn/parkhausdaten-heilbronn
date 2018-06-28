@@ -1,0 +1,36 @@
+version: '3'
+services:
+  db:
+    image: mongo:3
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+  api:
+    image: cfhn/parkhausdaten-hn-api
+    restart: always
+    depends_on:
+      - db
+    environment:
+      INFLUX_HOST: "influx.cfhn.it"
+      INFLUX_DB: "parkhaus-hn"
+      MONGODB_URL: "mongodb://root:root@db:27017/carpark?authSource=admin"
+      API_PORT: "3001"
+    networks:
+      - default
+      - traefik_net
+    labels:
+      traefik.enable: "true"
+      traefik.port: "3001"
+      traefik.frontend.rule: "Host: parkhn.cfhn.it"
+      traefik.docker.network: "traefik_net"
+  scraper: 
+    image: cfhn/parkhausdaten-hn-scraper
+    restart: always
+    depends_on:
+      - api
+    environment:
+      API_URL: "http://api:3001"
+networks:
+  traefik_net:
+    external: true
