@@ -1,8 +1,8 @@
 {
-  "name": "parkhausdaten-heilbronn",
+  "name": "parkhausdaten-heilbronn-api",
   "version": "0.0.1",
   "description": "https://www.heilbronn.de/allgemeine-inhalte/ajax-parkhausbelegung.html?type=1496993343",
-  "main": "db-api/index.js",
+  "main": "index.js",
   "directories": {
     "doc": "doc"
   },
