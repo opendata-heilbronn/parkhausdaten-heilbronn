@@ -2,7 +2,7 @@
 const moment = require('moment');
 
 function scrape(html) {
-    let result = {carparks: {}};
+    let result = { carparks: {} };
     //let result = {carparks: []};
 
     let $ = cheerio.load(html);
@@ -15,10 +15,13 @@ function scrape(html) {
     result.time = t.unix();
 
     $('div.carparkContent').each(function (i, element) {                      //loop thorugh all carpark elements
-        let location = $(this).find('.carparkLocation > a').text();           //extract carpark name
-        let freeString = $(this).children('.col-sm-5').text();                //extract carpark free places
+        let location =                                                        //extract carpark name
+           ( $(this).find('.carparkLocation > a').text() ||
+            $(this).find('.carparkLocation').text()).trim();
+        
+        let freeString = $(this).children('.col-sm-5').text();                //extract carpark free places   
         let free = freeString.replace("Freie Parkplätze: ", "") || -1;        //remove unnecessary string, write undefined instead of empty string
-        result.carparks[location] = {free: +free};                            //add carpark to results
+        result.carparks[location] = { free: +free };                            //add carpark to results
         //result.carparks.push({name: location, free: +free});
     });
     return result;
