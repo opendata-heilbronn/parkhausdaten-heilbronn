@@ -31,7 +31,7 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "influx": "^5.0.7",
-    "mongodb": "^2.2.30",
+    "mongodb": "^3.6.1",
     "cheerio": "^1.0.0-rc.2",
     "moment": "^2.18.1",
     "request": "^2.81.0"
