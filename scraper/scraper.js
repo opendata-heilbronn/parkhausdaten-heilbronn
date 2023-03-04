@@ -6,10 +6,13 @@ const localApiUrl = process.env.API_URL || "http://localhost:3001";
 
 const internalIds = { //relation between names from heilbronn api to our api
     'Am Bollwerksturm': 'hn-cp-bollwerksturm',
+    'Bildungscampus Mitte': 'hn-bildungscampus-mitte',
+    'Bildungscampus Ost': 'hn-bildungscampus-ost',
     'City-Parkhaus Experimenta': 'hn-cp-experimenta',
     'Harmonie': 'hn-harmonie',
     'Käthchenhof': 'hn-kaethchenhof',
     'Kiliansplatz': 'hn-kiliansplatz',
+    'Parkplatz Bahnhof': 'hn-parkplatz-bahnhof',
     'Stadtgalerie': 'hn-stadtgalerie',
     'Theaterforum K3': 'hn-k3',
     'Wollhaus': 'hn-wollhaus'
