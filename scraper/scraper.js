@@ -1,7 +1,7 @@
 const request = require('request');
 const scr = require('./scrape');
 
-const apiUrl = "http://www.heilbronn.de/allgemeine-inhalte/ajax-parkhausbelegung.html?type=1496993343";
+const apiUrl = "http://www.heilbronn.de/allgemeine-inhalte/ajax-parkhausbelegung?type=1496993343";
 const localApiUrl = process.env.API_URL || "http://localhost:3001";
 
 const internalIds = { //relation between names from heilbronn api to our api
